@@ -1,0 +1,12 @@
+## current plans for indigo-bot
+1. bot will use text configuration files for:
+	- irc host
+	- channels
+	- email configuration
+	- keyword list
+	- phrases list
+2. bot will 'watch' channels joined for keywords and phrases
+3. actions will include:
+	- email alerts
+	- sms alerts
+4. will be written using python (twisted) 
