@@ -18,7 +18,7 @@ def doCommand(self, msg):
 	if 'quit' in msg.lower():
 		self.quit('goodbye')
 
-class MyBot(irc.IRCClient):
+class IndigoBot(irc.IRCClient):
 	server = 'chat.freenode.net'
 	port = 6667
 
@@ -48,15 +48,8 @@ class MyBot(irc.IRCClient):
 		print("someone left the channel")
 
 
-
-#    	def _get_because(self):
-#		req = requests.get('http://developerexcuses.com/')
-#        	soup = BeautifulSoup(req.text)
-#        	elem = soup.find('a')
-#        	return elem.text.encode('ascii', 'ignore')
-
-class MyBotFactory(protocol.ClientFactory):
-	protocol = MyBot
+class IndigoBotFactory(protocol.ClientFactory):
+	protocol = IndigoBot
 	cfg = Config('indigo-bot.conf')
 	SERVER = cfg.get_option('server', 'address')
 	NICK = cfg.get_option('info', 'nickname')

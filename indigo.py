@@ -1,6 +1,6 @@
 from twisted.internet import reactor
-from indigobot import MyBotFactory
+from indigobot import IndigoBotFactory
 
-factory = MyBotFactory()
+factory = IndigoBotFactory()
 reactor.connectTCP(factory.protocol.server, factory.protocol.port, factory)
 reactor.run()
