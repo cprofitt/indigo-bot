@@ -2,17 +2,11 @@
 from twisted.words.protocols import irc
 from twisted.internet import reactor, protocol
 
-# from bs4 import BeautifulSoup
-
 # system imports
 
 # api imports
 import commands
 from modules.config import Config
-
-# NICK = 'indigo-bot'
-# CHANNEL = '##indigo-test'
-
 
 def doCommand(self, msg):
 	if 'quit' in msg.lower():
@@ -38,7 +32,8 @@ class IndigoBot(irc.IRCClient):
 		# test for admin
 		if 'cprofitt' in user.lower():
 			# admin sending
-			self.msg(channel, "at your command!")
+			senderNick = user.split('!', 1)[0]
+			self.msg(channel, senderNick + " I am at your command!")
 			if 'indigo-bot:' in msg.lower():
 				doCommand(self, msg)
 		else:
