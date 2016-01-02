@@ -4,13 +4,13 @@ from twisted.internet import reactor, protocol
 
 # system imports
 
-# api imports
-import commands
+# modules
+from modules.commands import doCommand
 from modules.config import Config
 
-def doCommand(self, msg):
-	if 'quit' in msg.lower():
-		self.quit('goodbye')
+# def doCommand(self, msg):
+#	if 'quit' in msg.lower():
+#		self.quit('goodbye')
 
 class IndigoBot(irc.IRCClient):
 	server = 'chat.freenode.net'
@@ -28,16 +28,7 @@ class IndigoBot(irc.IRCClient):
         	print("Joined %s." % channel)
 
 	def privmsg(self, user, channel, msg):
-		# handle input
-		# test for admin
-		if 'cprofitt' in user.lower():
-			# admin sending
-			senderNick = user.split('!', 1)[0]
-			self.msg(channel, senderNick + " I am at your command!")
-			if 'indigo-bot:' in msg.lower():
-				doCommand(self, msg)
-		else:
-			self.msg(channel, "sorry, you are not authorized")
+		doCommand(self, user, channel, msg)
 
 	def userLeft(self, user, channel):
 		print("someone left the channel")
